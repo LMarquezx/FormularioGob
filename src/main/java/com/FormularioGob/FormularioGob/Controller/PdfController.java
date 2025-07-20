@@ -1,10 +1,7 @@
 package com.FormularioGob.FormularioGob.Controller;
 
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.font.PDType0Font;
+import org.apache.poi.xwpf.usermodel.*;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,40 +21,78 @@ public class PdfController {
     }
 
     @PostMapping("/generate-pdf")
-    public void generatePdf(
-            @RequestParam Map<String, String> params,
-            HttpServletResponse response) throws Exception {
+    public void generateDocx(@RequestParam Map<String, String> params, HttpServletResponse response) throws Exception {
 
-        // Carga plantilla
-        ClassPathResource pdfRes = new ClassPathResource("pdf/solicitud_template.pdf");
-        InputStream in = pdfRes.getInputStream();
-        PDDocument doc = PDDocument.load(in);
-        PDPage page = doc.getPage(0);
+        InputStream template = new ClassPathResource("word/solicitud_template.docx").getInputStream();
+        XWPFDocument doc = new XWPFDocument(template);
+        String fechaCompleta = params.get("fecha");
+        String fechaNacimiento = params.get("fechaNacimiento");
+        descomponerFecha(fechaCompleta, params, "dSol", "mSol", "aSol");
+        descomponerFecha(fechaNacimiento, params, "diaNa", "mesNa","anioNa");
 
-        // Fuente
-        ClassPathResource fontRes = new ClassPathResource("fonts/OpenSans-Regular.ttf");
-        PDType0Font font = PDType0Font.load(doc, fontRes.getInputStream());
+        for (XWPFTable table : doc.getTables()) {
+            for (XWPFTableRow row : table.getRows()) {
+                for (XWPFTableCell cell : row.getTableCells()) {
+                    for (XWPFParagraph paragraph : cell.getParagraphs()) {
+                        StringBuilder fullText = new StringBuilder();
+                        for (XWPFRun run : paragraph.getRuns()) {
+                            String text = run.getText(0);
+                            if (text != null) {
+                                fullText.append(text);
+                            }
+                        }
 
-        // Dibuja campos
-        PDPageContentStream cs = new PDPageContentStream(doc, page, PDPageContentStream.AppendMode.APPEND, true);
-        cs.setFont(font, 12);
+                        String originalText = fullText.toString();
 
-        // Ejemplo coordenadas: ajustar X,Y según plantilla
-        cs.beginText(); cs.newLineAtOffset(100, 640);
-        cs.showText(params.getOrDefault("nombre", ""));
-        cs.endText();
+                        // Solo procesar si contiene algún marcador
+                        boolean contieneMarcador = params.keySet().stream()
+                                .anyMatch(key -> originalText.contains("{" + key + "}"));
 
-        cs.beginText(); cs.newLineAtOffset(300, 640);
-        cs.showText(params.getOrDefault("apellido1", ""));
-        cs.endText();
+                        if (contieneMarcador) {
+                            System.out.println("DEBUG MARCADOR DETECTADO: " + originalText);
+                            String replaced = originalText;
+                            for (Map.Entry<String, String> entry : params.entrySet()) {
+                                replaced = replaced.replace("{" + entry.getKey() + "}", entry.getValue());
+                            }
 
-        // ... más campos ...
-        cs.close();
+                            // Limpiar runs y agregar solo el texto reemplazado
+                            for (int i = paragraph.getRuns().size() - 1; i >= 0; i--) {
+                                paragraph.removeRun(i);
+                            }
 
-        // Envía PDF en respuesta
-        response.setContentType("application/pdf");
-        response.setHeader("Content-Disposition", "attachment; filename=solicitud_rellena.pdf");
-        doc.save(response.getOutputStream());
+                            XWPFRun newRun = paragraph.createRun();
+                            newRun.setFontSize(7);
+                            newRun.setFontFamily("Arial");
+                            newRun.setText(replaced);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        // Preparar respuesta
+        response.setContentType("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+        response.setHeader("Content-Disposition", "attachment; filename=solicitud_generada.docx");
+        doc.write(response.getOutputStream());
         doc.close();
+    }
+    private void descomponerFecha(String fecha, Map<String, String> params, String diaKey, String mesKey, String anioKey) {
+        if (fecha != null && !fecha.isEmpty()) {
+            try {
+                String[] partes = fecha.split("-");
+                if (partes.length == 3) {
+                    String anio = partes[0];
+                    String mes = partes[1];
+                    String dia = partes[2];
+
+                    params.put(diaKey, dia);
+                    params.put(mesKey, mes);
+                    params.put(anioKey, anio);
+                }
+            } catch (Exception e) {
+                System.out.println("Error al procesar la fecha: " + fecha);
+            }
+        }
     }
 }

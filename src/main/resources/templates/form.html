@@ -2,20 +2,86 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Formulario de Inscripción</title>
 </head>
 <body class="container mt-5">
 <h1>Solicitud de Inscripción</h1>
 <form th:action="@{/generate-pdf}" method="post" class="row g-3">
+    <h3>Datos Generales</h3>
     <div class="col-md-6">
-        <label class="form-label">Nombre(s)</label>
-        <input type="text" name="nombre" class="form-control" required />
+        <label class="form-label">Nombre del Plantel</label>
+        <input type="text" name="nombrePlantel" class="form-control" required />
     </div>
     <div class="col-md-6">
-        <label class="form-label">Primer Apellido</label>
-        <input type="text" name="apellido1" class="form-control" required />
+        <label class="form-label">Clave y Turno</label>
+        <input type="text" name="claveTurno"  class="form-control" required />
     </div>
+    <div class="col-md-6">
+        <label class="form-label">Localidad y Municipio de la institución</label>
+        <input type="text" name="localidad" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Fecha de la solicitud</label>
+        <input type="date" name="fecha" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Año escolar</label>
+        <input type="text" name="anioEscolar" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Folio de arancel por semestre</label>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label">1°</label>
+                <input type="text" name="FOLIO1" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">4°</label>
+                <input type="text" name="FOLIO4" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">2°</label>
+                <input type="text" name="FOLIO2" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">5°</label>
+                <input type="text" name="FOLIO5" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">3°</label>
+                <input type="text" name="FOLIO3" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">6°</label>
+                <input type="text" name="FOLIO6" class="form-control" required />
+            </div>
+        </div>
+
+    </div>
+    <hr>
+    <h3>Datos del solicitante</h3>
+    <div class="col-md-6">
+        <label class="form-label">Nombre completo</label>
+        <input type="text" name="nombreAlumno" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Apellido Paterno</label>
+        <input type="text" name="apellidoPaterno"class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Apellido Materno</label>
+        <input type="text" name="apellidoMaterno" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Lugar de Nacimiento</label>
+        <input type="text" name="lugarNacimiento" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Fecha de Nacimiento</label>
+        <input type="date" name="fechaNacimiento" class="form-control" required />
+    </div>
+
     <!-- Añade más campos según tu plantilla -->
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Generar PDF</button>
