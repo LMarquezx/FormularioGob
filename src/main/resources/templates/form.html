@@ -124,9 +124,38 @@
         <label class="form-label">Correo Electrónico</label>
         <input type="email" name="correoSolicitante" class="form-control" placeholder="ejemplo@correo.com" required />
     </div>
+    <hr>
+    <h3>Datos de Secundaria</h3>
+    <div class="col-md-6">
+        <label for="nombrePlantelProcedencia" class="form-label">Nombre del Plantel de Procedencia</label>
+        <input type="text" id="nombrePlantelProcedencia" name="nombrePlantelProcedencia" class="form-control" placeholder="Nombre de la secundaria" required />
+    </div>
+    <div class="col-md-6">
+        <label for="localidadProcedencia" class="form-label">Localidad de Procedencia</label>
+        <input type="text" id="localidadProcedencia" name="localidadProcedencia" class="form-control" placeholder="Ciudad/Municipio de la secundaria" required />
+    </div>
+    <div class="col-md-6">
+        <label for="fechaConSecundaria" class="form-label">Fecha de Conclusión de Secundaria</label>
+        <input type="date" id="fechaConSecundaria" name="fechaConSecundaria" class="form-control" required />
+    </div>
+
+    <hr>
+    <h3>Datos de Telebachillerato</h3>
+    <div class="col-md-6">
+        <label for="nombrePlantelTelebach" class="form-label">Nombre del Plantel de Telebachillerato</label>
+        <input type="text" id="nombrePlantelTelebach" name="nombrePlantelTelebach" class="form-control" placeholder="Nombre del telebachillerato" required />
+    </div>
+    <div class="col-md-6">
+        <label for="claveTelebach" class="form-label">Clave del Telebachillerato</label>
+        <input type="text" id="claveTelebach" name="claveTelebach" class="form-control" placeholder="Clave oficial" required />
+    </div>
+    <div class="col-md-6">
+        <label for="localidadTelebach" class="form-label">Localidad del Telebachillerato</label>
+        <input type="text" id="localidadTelebach" name="localidadTelebach" class="form-control" placeholder="Ciudad/Municipio del telebachillerato" required />
+    </div>
 
     <!-- Añade más campos según tu plantilla -->
-    <div class="col-12 mt-4">
+    <div class="col-12 mt-4 mb-3">
         <button type="submit" class="btn btn-primary btn-lg">Generar Documento</button>
     </div>
 </form>
