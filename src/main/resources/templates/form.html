@@ -81,10 +81,53 @@
         <label class="form-label">Fecha de Nacimiento</label>
         <input type="date" name="fechaNacimiento" class="form-control" required />
     </div>
+    <div class="col-md-6">
+        <label class="form-label">Tipo de Sangre</label>
+        <select name="tipoSangre" class="form-control" required>
+            <option value="">Selecciona tipo de sangre</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Lengua Materna</label>
+        <input type="text" name="lenguaMaterna" class="form-control" placeholder="Ej: Español, Inglés, etc." required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">CURP</label>
+        <input type="text" name="curp" class="form-control" placeholder="18 caracteres" maxlength="18" required />
+    </div>
+    
+    <div class="col-md-12">
+        <label class="form-label">Domicilio</label>
+        <input type="text" name="domicilio" class="form-control" placeholder="Calle, número, colonia" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Localidad del Solicitante</label>
+        <input type="text" name="localidadSolicitante" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Código Postal</label>
+        <input type="text" name="codigoPostal" class="form-control" pattern="[0-9]{5}" maxlength="5" placeholder="5 dígitos" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Teléfono del Solicitante</label>
+        <input type="tel" name="telefonoSolicitante" class="form-control" placeholder="10 dígitos" pattern="[0-9]{10}" maxlength="10" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Correo Electrónico</label>
+        <input type="email" name="correoSolicitante" class="form-control" placeholder="ejemplo@correo.com" required />
+    </div>
 
     <!-- Añade más campos según tu plantilla -->
-    <div class="col-12">
-        <button type="submit" class="btn btn-primary">Generar PDF</button>
+    <div class="col-12 mt-4">
+        <button type="submit" class="btn btn-primary btn-lg">Generar Documento</button>
     </div>
 </form>
 </body>
