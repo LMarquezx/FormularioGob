@@ -83,7 +83,7 @@
     </div>
     <div class="col-md-6">
         <label class="form-label">Tipo de Sangre</label>
-        <select name="tipoSangre" class="form-control" required>
+        <select name="tipoSangre" class="form-select" required>
             <option value="">Selecciona tipo de sangre</option>
             <option value="A+">A+</option>
             <option value="A-">A-</option>
@@ -104,6 +104,37 @@
         <input type="text" name="curp" class="form-control" placeholder="18 caracteres" maxlength="18" required />
     </div>
     
+    <!-- Nuevos campos con círculos de selección -->
+    <div class="col-md-6">
+        <label class="form-label">Género</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genero" id="generoMasc" value="MASC" required>
+                <label class="form-check-label" for="generoMasc">MASC</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="genero" id="generoFem" value="FEM" required>
+                <label class="form-check-label" for="generoFem">FEM</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <label class="form-label">Nacionalidad</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="nacionalidad" id="nacionalidadMex" value="MEX" required>
+                <label class="form-check-label" for="nacionalidadMex">MEX</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="nacionalidad" id="nacionalidadOtra" value="OTRA" required>
+                <label class="form-check-label" for="nacionalidadOtra">OTRA</label>
+            </div>
+        </div>
+    </div>
+    
+    <hr>
+    <h3>Datos de Contacto</h3>
     <div class="col-md-12">
         <label class="form-label">Domicilio</label>
         <input type="text" name="domicilio" class="form-control" placeholder="Calle, número, colonia" required />
@@ -138,6 +169,75 @@
         <label for="fechaConSecundaria" class="form-label">Fecha de Conclusión de Secundaria</label>
         <input type="date" id="fechaConSecundaria" name="fechaConSecundaria" class="form-control" required />
     </div>
+    
+    <!-- Campos de selección para datos de secundaria -->
+    <div class="col-md-12">
+        <label class="form-label">Tipo de Alumno</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipoAlumno" id="conCertificado" value="CON_CERT" required>
+                <label class="form-check-label" for="conCertificado">CON CERTIFICADO</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipoAlumno" id="faltaCertificado" value="FALTA_CERT" required>
+                <label class="form-check-label" for="faltaCertificado">FALTA CERTIFICADO</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <label class="form-label">Modalidad</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="modalidad" id="escolarizada" value="ESCOLARIZADA" required>
+                <label class="form-check-label" for="escolarizada">ESCOLARIZADA</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="modalidad" id="vea" value="VEA" required>
+                <label class="form-check-label" for="vea">VEA</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <label class="form-label">Turno</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="turno" id="matutino" value="MAT" required>
+                <label class="form-check-label" for="matutino">MAT</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="turno" id="vespertino" value="VESP" required>
+                <label class="form-check-label" for="vespertino">VESP</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="turno" id="nocturno" value="NOC" required>
+                <label class="form-check-label" for="nocturno">NOCT</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="turno" id="abierto" value="ABIERTO" required>
+                <label class="form-check-label" for="abierto">ABIERTO</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-12">
+        <label class="form-label">Dependencia</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="dependencia" id="sev" value="SEV" required>
+                <label class="form-check-label" for="sev">SEV</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="dependencia" id="sep" value="SEP" required>
+                <label class="form-check-label" for="sep">SEP</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="dependencia" id="otro" value="OTRO" required>
+                <label class="form-check-label" for="otro">OTRO</label>
+            </div>
+        </div>
+    </div>
 
     <hr>
     <h3>Datos de Telebachillerato</h3>
@@ -153,11 +253,581 @@
         <label for="localidadTelebach" class="form-label">Localidad del Telebachillerato</label>
         <input type="text" id="localidadTelebach" name="localidadTelebach" class="form-control" placeholder="Ciudad/Municipio del telebachillerato" required />
     </div>
+    <div class="col-md-6">
+        <label for="semestre" class="form-label">Semestre a Cursar</label>
+        <select id="semestre" name="semestre" class="form-select" required>
+            <option value="">Seleccionar semestre</option>
+            <option value="1">1° Semestre</option>
+            <option value="2">2° Semestre</option>
+            <option value="3">3° Semestre</option>
+            <option value="4">4° Semestre</option>
+            <option value="5">5° Semestre</option>
+            <option value="6">6° Semestre</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label for="areaPropedeutica" class="form-label">Área Propedéutica</label>
+        <select id="areaPropedeutica" name="areaPropedeutica" class="form-select" required>
+            <option value="">Seleccionar área</option>
+            <option value="QB">Químico Biológicas (QB)</option>
+            <option value="EA">Económico Administrativas (EA)</option>
+            <option value="HC">Humanidades y Ciencias Sociales (HC)</option>
+            <option value="FM">Físico Matemáticas (FM)</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label for="grupo" class="form-label">Grupo</label>
+        <select id="grupo" name="grupo" class="form-select" required>
+            <option value="">Seleccionar grupo</option>
+            <option value="A">Grupo A</option>
+            <option value="B">Grupo B</option>
+            <option value="C">Grupo C</option>
+            <option value="D">Grupo D</option>
+            <option value="E">Grupo E</option>
+            <option value="F">Grupo F</option>
+            <option value="G">Grupo G</option>
+            <option value="H">Grupo H</option>
+            <option value="I">Grupo I</option>
+        </select>
+    </div>
+    
+    <div class="col-md-12">
+        <label class="form-label">Tipo de Alumno</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipoAlumnoTelebach" id="alumnoRegular" value="REG" required>
+                <label class="form-check-label" for="alumnoRegular">REGULAR (REG)</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipoAlumnoTelebach" id="alumnoIrregular" value="IREG" required>
+                <label class="form-check-label" for="alumnoIrregular">IRREGULAR (IREG)</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipoAlumnoTelebach" id="alumnoRepetidor" value="REP" required>
+                <label class="form-check-label" for="alumnoRepetidor">REPETIDOR DE MATERIAS (REP)</label>
+            </div>
+        </div>
+    </div>
 
+    <hr>
+    <h3>Datos de la Madre</h3>
+    <div class="col-md-6">
+        <label for="nombreMadre" class="form-label">Nombre Completo de la Madre</label>
+        <input type="text" id="nombreMadre" name="nombreMadre" class="form-control" placeholder="Nombre completo" required />
+    </div>
+    <div class="col-md-6">
+        <label for="curpMadre" class="form-label">CURP de la Madre</label>
+        <input type="text" id="curpMadre" name="curpMadre" class="form-control" placeholder="18 caracteres" maxlength="18" required />
+    </div>
+    <div class="col-md-6">
+        <label for="fechaNacMadre" class="form-label">Fecha de Nacimiento de la Madre</label>
+        <input type="date" id="fechaNacMadre" name="fechaNacMadre" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label for="estadoCivilMadre" class="form-label">Estado Civil de la Madre</label>
+        <select id="estadoCivilMadre" name="estadoCivilMadre" class="form-select" required>
+            <option value="">Seleccionar estado civil</option>
+            <option value="Soltera">Soltera</option>
+            <option value="Casada">Casada</option>
+            <option value="Divorciada">Divorciada</option>
+            <option value="Viuda">Viuda</option>
+            <option value="Union_Libre">Unión Libre</option>
+        </select>
+    </div>
+    <div class="col-md-12">
+        <label for="domicilioMadre" class="form-label">Domicilio de la Madre</label>
+        <input type="text" id="domicilioMadre" name="domicilioMadre" class="form-control" placeholder="Calle, número, colonia" required />
+    </div>
+    <div class="col-md-4">
+        <label for="localidadMadre" class="form-label">Localidad de la Madre</label>
+        <input type="text" id="localidadMadre" name="localidadMadre" class="form-control" required />
+    </div>
+    <div class="col-md-4">
+        <label for="entidadMadre" class="form-label">Entidad de la Madre</label>
+        <input type="text" id="entidadMadre" name="entidadMadre" class="form-control" placeholder="Estado" required />
+    </div>
+    <div class="col-md-4">
+        <label for="codPostalMadre" class="form-label">Código Postal de la Madre</label>
+        <input type="text" id="codPostalMadre" name="codPostalMadre" class="form-control" pattern="[0-9]{5}" maxlength="5" placeholder="5 dígitos" required />
+    </div>
+    <div class="col-md-6">
+        <label for="telMadre" class="form-label">Teléfono de la Madre</label>
+        <input type="tel" id="telMadre" name="telMadre" class="form-control" placeholder="10 dígitos" pattern="[0-9]{10}" maxlength="10" required />
+    </div>
+    <div class="col-md-6">
+        <label for="ocupacionMadre" class="form-label">Ocupación de la Madre</label>
+        <input type="text" id="ocupacionMadre" name="ocupacionMadre" class="form-control" placeholder="Profesión u ocupación" required />
+    </div>
+    <div class="col-md-6">
+        <label for="nivelEstudiosMadre" class="form-label">Nivel de Estudios de la Madre</label>
+        <select id="nivelEstudiosMadre" name="nivelEstudiosMadre" class="form-select" required>
+            <option value="">Seleccionar nivel</option>
+            <option value="Sin_estudios">Sin estudios</option>
+            <option value="Primaria">Primaria</option>
+            <option value="Secundaria">Secundaria</option>
+            <option value="Preparatoria">Preparatoria</option>
+            <option value="Licenciatura">Licenciatura</option>
+            <option value="Posgrado">Posgrado</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label for="gradoMadre" class="form-label">Grado de la Madre</label>
+        <input type="text" id="gradoMadre" name="gradoMadre" class="form-control" placeholder="Grado específico o título" />
+    </div>
+    
+    <!-- Nuevos campos para la madre -->
+    <div class="col-md-4">
+        <label class="form-label">Sexo de la Madre</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sexoMadre" id="sexoMadreM" value="MASCULINO" required>
+                <label class="form-check-label" for="sexoMadreM">MASCULINO</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sexoMadre" id="sexoMadreF" value="FEMENINO" required>
+                <label class="form-check-label" for="sexoMadreF">FEMENINO</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <label class="form-label">¿Es Tutor la Madre?</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tutorMadre" id="tutorMadreS" value="SI" required>
+                <label class="form-check-label" for="tutorMadreS">SÍ</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tutorMadre" id="tutorMadreN" value="NO" required>
+                <label class="form-check-label" for="tutorMadreN">NO</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <label class="form-label">¿Sabe Leer la Madre?</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sabeLeerMadre" id="sabeLeerMadreS" value="SI" required>
+                <label class="form-check-label" for="sabeLeerMadreS">SÍ</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sabeLeerMadre" id="sabeLeerMadreN" value="NO" required>
+                <label class="form-check-label" for="sabeLeerMadreN">NO</label>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h3>Datos del Padre</h3>
+    <div class="col-md-6">
+        <label for="nombrePadre" class="form-label">Nombre Completo del Padre</label>
+        <input type="text" id="nombrePadre" name="nombrePadre" class="form-control" placeholder="Nombre completo" required />
+    </div>
+    <div class="col-md-6">
+        <label for="curpPadre" class="form-label">CURP del Padre</label>
+        <input type="text" id="curpPadre" name="curpPadre" class="form-control" placeholder="18 caracteres" maxlength="18" required />
+    </div>
+    <div class="col-md-6">
+        <label for="fechaNacPadre" class="form-label">Fecha de Nacimiento del Padre</label>
+        <input type="date" id="fechaNacPadre" name="fechaNacPadre" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label for="estadoCivilPadre" class="form-label">Estado Civil del Padre</label>
+        <select id="estadoCivilPadre" name="estadoCivilPadre" class="form-select" required>
+            <option value="">Seleccionar estado civil</option>
+            <option value="Soltero">Soltero</option>
+            <option value="Casado">Casado</option>
+            <option value="Divorciado">Divorciado</option>
+            <option value="Viudo">Viudo</option>
+            <option value="Union_Libre">Unión Libre</option>
+        </select>
+    </div>
+    <div class="col-md-12">
+        <label for="domicilioPadre" class="form-label">Domicilio del Padre</label>
+        <input type="text" id="domicilioPadre" name="domicilioPadre" class="form-control" placeholder="Calle, número, colonia" required />
+    </div>
+    <div class="col-md-4">
+        <label for="localidadPadre" class="form-label">Localidad del Padre</label>
+        <input type="text" id="localidadPadre" name="localidadPadre" class="form-control" required />
+    </div>
+    <div class="col-md-4">
+        <label for="entidadPadre" class="form-label">Entidad del Padre</label>
+        <input type="text" id="entidadPadre" name="entidadPadre" class="form-control" placeholder="Estado" required />
+    </div>
+    <div class="col-md-4">
+        <label for="codPostalPadre" class="form-label">Código Postal del Padre</label>
+        <input type="text" id="codPostalPadre" name="codPostalPadre" class="form-control" pattern="[0-9]{5}" maxlength="5" placeholder="5 dígitos" required />
+    </div>
+    <div class="col-md-6">
+        <label for="telPadre" class="form-label">Teléfono del Padre</label>
+        <input type="tel" id="telPadre" name="telPadre" class="form-control" placeholder="10 dígitos" pattern="[0-9]{10}" maxlength="10" required />
+    </div>
+    <div class="col-md-6">
+        <label for="ocupacionPadre" class="form-label">Ocupación del Padre</label>
+        <input type="text" id="ocupacionPadre" name="ocupacionPadre" class="form-control" placeholder="Profesión u ocupación" required />
+    </div>
+    <div class="col-md-6">
+        <label for="nivelEstudiosPadre" class="form-label">Nivel de Estudios del Padre</label>
+        <select id="nivelEstudiosPadre" name="nivelEstudiosPadre" class="form-select" required>
+            <option value="">Seleccionar nivel</option>
+            <option value="Sin_estudios">Sin estudios</option>
+            <option value="Primaria">Primaria</option>
+            <option value="Secundaria">Secundaria</option>
+            <option value="Preparatoria">Preparatoria</option>
+            <option value="Licenciatura">Licenciatura</option>
+            <option value="Posgrado">Posgrado</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label for="gradoPadre" class="form-label">Grado del Padre</label>
+        <input type="text" id="gradoPadre" name="gradoPadre" class="form-control" placeholder="Grado específico o título" />
+    </div>
+    
+    <!-- Nuevos campos para el padre -->
+    <div class="col-md-4">
+        <label class="form-label">Sexo del Padre</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sexoPadre" id="sexoPadreM" value="MASCULINO" required>
+                <label class="form-check-label" for="sexoPadreM">MASCULINO</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sexoPadre" id="sexoPadreF" value="FEMENINO" required>
+                <label class="form-check-label" for="sexoPadreF">FEMENINO</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <label class="form-label">¿Es Tutor el Padre?</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tutorPadre" id="tutorPadreS" value="SI" required>
+                <label class="form-check-label" for="tutorPadreS">SÍ</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tutorPadre" id="tutorPadreN" value="NO" required>
+                <label class="form-check-label" for="tutorPadreN">NO</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <label class="form-label">¿Sabe Leer el Padre?</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sabeLeerPadre" id="sabeLeerPadreS" value="SI" required>
+                <label class="form-check-label" for="sabeLeerPadreS">SÍ</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sabeLeerPadre" id="sabeLeerPadreN" value="NO" required>
+                <label class="form-check-label" for="sabeLeerPadreN">NO</label>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h3>Datos del Tutor</h3>
+    <div class="col-md-6">
+        <label for="nombreTutor" class="form-label">Nombre Completo del Tutor</label>
+        <input type="text" id="nombreTutor" name="nombreTutor" class="form-control" placeholder="Nombre completo" />
+    </div>
+    <div class="col-md-6">
+        <label for="curpTutor" class="form-label">CURP del Tutor</label>
+        <input type="text" id="curpTutor" name="curpTutor" class="form-control" placeholder="18 caracteres" maxlength="18" />
+    </div>
+    <div class="col-md-6">
+        <label for="fechaNacTutor" class="form-label">Fecha de Nacimiento del Tutor</label>
+        <input type="date" id="fechaNacTutor" name="fechaNacTutor" class="form-control" />
+    </div>
+    <div class="col-md-6">
+        <label for="estadoCivilTutor" class="form-label">Estado Civil del Tutor</label>
+        <select id="estadoCivilTutor" name="estadoCivilTutor" class="form-select">
+            <option value="">Seleccionar estado civil</option>
+            <option value="Soltero">Soltero</option>
+            <option value="Casado">Casado</option>
+            <option value="Divorciado">Divorciado</option>
+            <option value="Viudo">Viudo</option>
+            <option value="Union_Libre">Unión Libre</option>
+        </select>
+    </div>
+    <div class="col-md-12">
+        <label for="domicilioTutor" class="form-label">Domicilio del Tutor</label>
+        <input type="text" id="domicilioTutor" name="domicilioTutor" class="form-control" placeholder="Calle, número, colonia" />
+    </div>
+    <div class="col-md-4">
+        <label for="localidadTutor" class="form-label">Localidad del Tutor</label>
+        <input type="text" id="localidadTutor" name="localidadTutor" class="form-control" />
+    </div>
+    <div class="col-md-4">
+        <label for="entidadTutor" class="form-label">Entidad del Tutor</label>
+        <input type="text" id="entidadTutor" name="entidadTutor" class="form-control" placeholder="Estado" />
+    </div>
+    <div class="col-md-4">
+        <label for="codPostalTutor" class="form-label">Código Postal del Tutor</label>
+        <input type="text" id="codPostalTutor" name="codPostalTutor" class="form-control" pattern="[0-9]{5}" maxlength="5" placeholder="5 dígitos" />
+    </div>
+    <div class="col-md-6">
+        <label for="telTutor" class="form-label">Teléfono del Tutor</label>
+        <input type="tel" id="telTutor" name="telTutor" class="form-control" placeholder="10 dígitos" pattern="[0-9]{10}" maxlength="10" />
+    </div>
+    <div class="col-md-6">
+        <label for="ocupacionTutor" class="form-label">Ocupación del Tutor</label>
+        <input type="text" id="ocupacionTutor" name="ocupacionTutor" class="form-control" placeholder="Profesión u ocupación" />
+    </div>
+    <div class="col-md-6">
+        <label for="nivelEstudiosTutor" class="form-label">Nivel de Estudios del Tutor</label>
+        <select id="nivelEstudiosTutor" name="nivelEstudiosTutor" class="form-select">
+            <option value="">Seleccionar nivel</option>
+            <option value="Sin_estudios">Sin estudios</option>
+            <option value="Primaria">Primaria</option>
+            <option value="Secundaria">Secundaria</option>
+            <option value="Preparatoria">Preparatoria</option>
+            <option value="Licenciatura">Licenciatura</option>
+            <option value="Posgrado">Posgrado</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label for="gradoTutor" class="form-label">Grado del Tutor</label>
+        <input type="text" id="gradoTutor" name="gradoTutor" class="form-control" placeholder="Grado específico o título" />
+    </div>
+    
+    <!-- Nuevos campos para el tutor -->
+    <div class="col-md-6">
+        <label for="parentesco" class="form-label">Parentesco con el Tutor</label>
+        <input type="text" id="parentesco" name="parentesco" class="form-control" placeholder="Ej: Tío, Abuelo, etc." />
+    </div>
+    
+    <div class="col-md-4">
+        <label class="form-label">Sexo del Tutor</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sexoTutor" id="sexoTutorM" value="MASCULINO">
+                <label class="form-check-label" for="sexoTutorM">MASCULINO</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sexoTutor" id="sexoTutorF" value="FEMENINO">
+                <label class="form-check-label" for="sexoTutorF">FEMENINO</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <label class="form-label">¿Sabe Leer el Tutor?</label>
+        <div class="mt-2">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sabeLeerTutor" id="sabeLeerTutorS" value="SI">
+                <label class="form-check-label" for="sabeLeerTutorS">SÍ</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="sabeLeerTutor" id="sabeLeerTutorN" value="NO">
+                <label class="form-check-label" for="sabeLeerTutorN">NO</label>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    
+    <h3>Documentos Presentados</h3>
+    <div class="col-12">
+        <label class="form-label">Seleccione los documentos presentados (puede seleccionar múltiples opciones):</label>
+        <div class="mt-2">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="documentos" value="ACT" id="docACT">
+                <label class="form-check-label" for="docACT">
+                    ACTA DE NACIMIENTO Y 2 FOTO COPIAS
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="documentos" value="CBC" id="docCBC">
+                <label class="form-check-label" for="docCBC">
+                    CARTA DE BUENA CONDUCTA
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="documentos" value="CRP" id="docCRP">
+                <label class="form-check-label" for="docCRP">
+                    CURP
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="documentos" value="CL" id="docCL">
+                <label class="form-check-label" for="docCL">
+                    CONSTANCIA LEGALIZADA
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="documentos" value="CSC" id="docCSC">
+                <label class="form-check-label" for="docCSC">
+                    CERTIFICADO DE SECUNDARIA COMPLETO Y DOS FOTO COPIAS
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="documentos" value="CFI" id="docCFI">
+                <label class="form-check-label" for="docCFI">
+                    CUATRO FOTOCOPIAS TAMAÑO INFANTIL EN BLANCO Y NEGRO
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="documentos" value="CRS" id="docCRS">
+                <label class="form-check-label" for="docCRS">
+                    CARTA RESPONSIVA
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 mt-3">
+        <label for="otrosDocumentos" class="form-label">Otros documentos:</label>
+        <input type="text" id="otrosDocumentos" name="otrosDocumentos" class="form-control" placeholder="Especifique otros documentos presentados" />
+    </div>
+
+    <hr>
+    
+    <h3>Becas del Alumno</h3>
+    <div class="col-12">
+        <label class="form-label">Seleccione las becas del alumno (puede seleccionar múltiples opciones):</label>
+        <div class="mt-2">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="becas" value="PROS" id="becaPROS">
+                <label class="form-check-label" for="becaPROS">
+                    PROSPERA
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="becas" value="CAES" id="becaCAES">
+                <label class="form-check-label" for="becaCAES">
+                    CONTRA EL ABANDONO ESCOLAR
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="becas" value="INGR" id="becaINGR">
+                <label class="form-check-label" for="becaINGR">
+                    INGRESO
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="becas" value="PERM" id="becaPERM">
+                <label class="form-check-label" for="becaPERM">
+                    PERMANENCIA
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="becas" value="EXCE" id="becaEXCE">
+                <label class="form-check-label" for="becaEXCE">
+                    EXCELENCIA
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 mt-3">
+        <label for="otraBeca" class="form-label">Otra beca:</label>
+        <input type="text" id="otraBeca" name="otraBeca" class="form-control" placeholder="Especifique otra beca" />
+    </div>
+
+    <hr>
+    
+    <h3>Discapacidades del Alumno</h3>
+    <div class="col-12">
+        <label class="form-label">Seleccione las discapacidades del alumno (puede seleccionar múltiples opciones):</label>
+        <div class="mt-2">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="discapacidades" value="CEGE" id="discCEGE">
+                <label class="form-check-label" for="discCEGE">
+                    CEGUERA
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="discapacidades" value="SORD" id="discSORD">
+                <label class="form-check-label" for="discSORD">
+                    SORDERA
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="discapacidades" value="MOTR" id="discMOTR">
+                <label class="form-check-label" for="discMOTR">
+                    MOTRIZ
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="discapacidades" value="VISU" id="discVISU">
+                <label class="form-check-label" for="discVISU">
+                    VISUAL
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="discapacidades" value="AUDI" id="discAUDI">
+                <label class="form-check-label" for="discAUDI">
+                    AUDITIVA
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 mt-3">
+        <label for="otraDiscapacidad" class="form-label">Otra discapacidad:</label>
+        <input type="text" id="otraDiscapacidad" name="otraDiscapacidad" class="form-control" placeholder="Especifique otra discapacidad" />
+    </div>
+
+    <hr>
+    
     <!-- Añade más campos según tu plantilla -->
     <div class="col-12 mt-4 mb-3">
         <button type="submit" class="btn btn-primary btn-lg">Generar Documento</button>
     </div>
 </form>
+
+<script>
+// Validación para que no puedan marcar como tutor tanto al padre como a la madre
+document.addEventListener('DOMContentLoaded', function() {
+    const tutorMadreInputs = document.querySelectorAll('input[name="tutorMadre"]');
+    const tutorPadreInputs = document.querySelectorAll('input[name="tutorPadre"]');
+    
+    function validarTutores() {
+        const tutorMadreSeleccionado = document.querySelector('input[name="tutorMadre"]:checked');
+        const tutorPadreSeleccionado = document.querySelector('input[name="tutorPadre"]:checked');
+        
+        if (tutorMadreSeleccionado && tutorPadreSeleccionado) {
+            if (tutorMadreSeleccionado.value === 'SI' && tutorPadreSeleccionado.value === 'SI') {
+                alert('No pueden ser tutores tanto la madre como el padre. Por favor, seleccione solo uno.');
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    // Agregar eventos a los radio buttons
+    tutorMadreInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            if (this.value === 'SI') {
+                const tutorPadreSeleccionado = document.querySelector('input[name="tutorPadre"]:checked');
+                if (tutorPadreSeleccionado && tutorPadreSeleccionado.value === 'SI') {
+                    alert('No pueden ser tutores tanto la madre como el padre. Desmarcando al padre como tutor.');
+                    document.querySelector('input[name="tutorPadre"][value="NO"]').checked = true;
+                }
+            }
+        });
+    });
+    
+    tutorPadreInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            if (this.value === 'SI') {
+                const tutorMadreSeleccionado = document.querySelector('input[name="tutorMadre"]:checked');
+                if (tutorMadreSeleccionado && tutorMadreSeleccionado.value === 'SI') {
+                    alert('No pueden ser tutores tanto la madre como el padre. Desmarcando a la madre como tutor.');
+                    document.querySelector('input[name="tutorMadre"][value="NO"]').checked = true;
+                }
+            }
+        });
+    });
+    
+    // Validar antes del envío del formulario
+    document.querySelector('form').addEventListener('submit', function(e) {
+        if (!validarTutores()) {
+            e.preventDefault();
+        }
+    });
+});
+</script>
+
 </body>
 </html>
