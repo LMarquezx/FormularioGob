@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Estadísticas de Solicitudes</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black mb-4">
+        <div class="container">
+            <div class="navbar-brand">
+                <img src="/images/logo.png" alt="FormularioGob" style="height: 40px;" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <span style="display: none;">FormularioGob</span>
+            </div>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">
+                    <i class="bi bi-plus-circle"></i> Alta de Registro
+                </a>
+                <a class="nav-link" href="/solicitudes/consultar">Consultar</a>
+                <a class="nav-link" href="/solicitudes/listar">Listar Todas</a>
+                <a class="nav-link active" href="/solicitudes/estadisticas">Estadísticas</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+            <h1>Estadísticas de Solicitudes</h1>
+            <p class="text-muted">Dashboard con información estadística de las solicitudes de inscripción.</p>
+        </div>
+    </div>
+
+    <!-- Total de solicitudes -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-center bg-primary text-white">
+                <div class="card-body">
+                    <h2 th:text="${totalSolicitudes}">0</h2>
+                    <p class="card-text">Total de Solicitudes</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center bg-success text-white">
+                <div class="card-body">
+                    <h2 th:text="${generoMasc}">0</h2>
+                    <p class="card-text">Estudiantes Masculinos</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center bg-info text-white">
+                <div class="card-body">
+                    <h2 th:text="${generoFem}">0</h2>
+                    <p class="card-text">Estudiantes Femeninas</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-center bg-warning text-dark">
+                <div class="card-body">
+                    <h2 th:text="${semestre1}">0</h2>
+                    <p class="card-text">Primer Semestre</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Distribución por semestre -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="bi bi-bar-chart"></i> Distribución por Semestre</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <strong>1° Semestre:</strong> <span class="badge bg-primary" th:text="${semestre1}">0</span>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <strong>2° Semestre:</strong> <span class="badge bg-primary" th:text="${semestre2}">0</span>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <strong>3° Semestre:</strong> <span class="badge bg-primary" th:text="${semestre3}">0</span>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <strong>4° Semestre:</strong> <span class="badge bg-primary" th:text="${semestre4}">0</span>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <strong>5° Semestre:</strong> <span class="badge bg-primary" th:text="${semestre5}">0</span>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <strong>6° Semestre:</strong> <span class="badge bg-primary" th:text="${semestre6}">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="bi bi-pie-chart"></i> Distribución por Área Propedéutica</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <strong>Químico Biológicas:</strong> <span class="badge bg-success" th:text="${areaQB}">0</span>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <strong>Económico Administrativas:</strong> <span class="badge bg-info" th:text="${areaEA}">0</span>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <strong>Humanidades y C. Sociales:</strong> <span class="badge bg-warning" th:text="${areaHC}">0</span>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <strong>Físico Matemáticas:</strong> <span class="badge bg-danger" th:text="${areaFM}">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Acciones rápidas -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="bi bi-lightning"></i> Acciones Rápidas</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-2">
+                            <a href="/solicitudes/listar" class="btn btn-outline-primary w-100">
+                                <i class="bi bi-list"></i> Ver Todas las Solicitudes
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <a href="/solicitudes/consultar" class="btn btn-outline-info w-100">
+                                <i class="bi bi-search"></i> Buscar Solicitudes
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <a href="/" class="btn btn-outline-success w-100">
+                                <i class="bi bi-plus-circle"></i> Nueva Solicitud
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <a href="/solicitudes/buscar?criterio=semestre&valor=1" class="btn btn-outline-warning w-100">
+                                <i class="bi bi-filter"></i> Filtrar por Semestre
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

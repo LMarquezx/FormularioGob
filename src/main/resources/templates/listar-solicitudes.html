@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Lista de Solicitudes</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black mb-4">
+        <div class="container">
+            <div class="navbar-brand">
+                <img src="/images/logo.png" alt="FormularioGob" style="height: 40px;" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <span style="display: none;">FormularioGob</span>
+            </div>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">
+                    <i class="bi bi-plus-circle"></i> Alta de Registro
+                </a>
+                <a class="nav-link" href="/solicitudes/consultar">Consultar</a>
+                <a class="nav-link active" href="/solicitudes/listar">Listar Todas</a>
+                <a class="nav-link" href="/solicitudes/estadisticas">Estadísticas</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+        <div class="col-md-12">
+            <h1>Lista de Solicitudes</h1>
+            
+            <!-- Mostrar criterios de búsqueda si existen -->
+            <div th:if="${criterio != null and valor != null}" class="alert alert-info">
+                <strong>Búsqueda activa:</strong> <span th:text="${criterio}"></span> = "<span th:text="${valor}"></span>"
+                <a href="/solicitudes/listar" class="btn btn-sm btn-outline-secondary ms-2">Ver todas</a>
+            </div>
+            
+            <!-- Mostrar rango de fechas si existe -->
+            <div th:if="${fechaInicio != null and fechaFin != null}" class="alert alert-info">
+                <strong>Rango de fechas:</strong> <span th:text="${fechaInicio}"></span> - <span th:text="${fechaFin}"></span>
+                <a href="/solicitudes/listar" class="btn btn-sm btn-outline-secondary ms-2">Ver todas</a>
+            </div>
+            
+            <!-- Mensajes de éxito o error -->
+            <div th:if="${param.success}" class="alert alert-success">
+                Solicitud eliminada exitosamente.
+            </div>
+            <div th:if="${param.error}" class="alert alert-danger">
+                Error al eliminar la solicitud.
+            </div>
+            
+            <p class="text-muted">Total de solicitudes encontradas: <span th:text="${solicitudes != null ? solicitudes.size() : 0}"></span></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div th:if="${solicitudes == null or solicitudes.isEmpty()}" class="alert alert-warning">
+                No se encontraron solicitudes que coincidan con los criterios de búsqueda.
+            </div>
+            
+            <div th:if="${solicitudes != null and !solicitudes.isEmpty()}" class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Fecha Creación</th>
+                            <th>Nombre Completo</th>
+                            <th>CURP</th>
+                            <th>Plantel</th>
+                            <th>Semestre</th>
+                            <th>Área</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="solicitud : ${solicitudes}">
+                            <td>
+                                <span th:if="${solicitud.fechaCreacion != null}" 
+                                      th:text="${#temporals.format(solicitud.fechaCreacion, 'dd/MM/yyyy HH:mm')}"></span>
+                                <span th:if="${solicitud.fechaCreacion == null}">N/A</span>
+                            </td>
+                            <td>
+                                <span th:text="${(solicitud.nombreAlumno != null ? solicitud.nombreAlumno : '') + 
+                                               (solicitud.apellidoPaterno != null ? ' ' + solicitud.apellidoPaterno : '') + 
+                                               (solicitud.apellidoMaterno != null ? ' ' + solicitud.apellidoMaterno : '')}"></span>
+                            </td>
+                            <td>
+                                <span th:text="${solicitud.curp != null ? solicitud.curp : 'N/A'}"></span>
+                            </td>
+                            <td>
+                                <span th:text="${solicitud.nombrePlantelTelebach != null ? solicitud.nombrePlantelTelebach : 'N/A'}"></span>
+                            </td>
+                            <td>
+                                <span th:if="${solicitud.semestre != null}" 
+                                      class="badge bg-primary" 
+                                      th:text="${solicitud.semestre + '°'}"></span>
+                                <span th:if="${solicitud.semestre == null}" 
+                                      class="badge bg-secondary">N/A</span>
+                            </td>
+                            <td>
+                                <span th:if="${solicitud.areaPropedeutica != null}" 
+                                      class="badge bg-secondary" 
+                                      th:text="${solicitud.areaPropedeutica}"></span>
+                                <span th:if="${solicitud.areaPropedeutica == null}" 
+                                      class="badge bg-secondary">N/A</span>
+                            </td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a th:href="@{/solicitudes/detalle/{id}(id=${solicitud.id})}" 
+                                       class="btn btn-sm btn-outline-info">Ver</a>
+                                    <button type="button" 
+                                            class="btn btn-sm btn-outline-danger"
+                                            th:attr="data-id=${solicitud.id}"
+                                            onclick="confirmarEliminacion(this.getAttribute('data-id'))">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación para eliminación -->
+    <div class="modal fade" id="modalEliminar" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro de que desea eliminar esta solicitud? Esta acción no se puede deshacer.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <form id="formEliminar" method="post" style="display: inline;">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function confirmarEliminacion(id) {
+            document.getElementById('formEliminar').action = '/solicitudes/eliminar/' + id;
+            new bootstrap.Modal(document.getElementById('modalEliminar')).show();
+        }
+    </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Consultar Solicitudes</title>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black mb-4">
+        <div class="container">
+            <div class="navbar-brand">
+                <img src="/images/logo.png" alt="FormularioGob" style="height: 40px;" 
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                <span style="display: none;">FormularioGob</span>
+            </div>
+            <div class="navbar-nav">
+                <a class="nav-link" href="/">
+                    <i class="bi bi-plus-circle"></i> Alta de Registro
+                </a>
+                <a class="nav-link active" href="/solicitudes/consultar">Consultar</a>
+                <a class="nav-link" href="/solicitudes/listar">Listar Todas</a>
+                <a class="nav-link" href="/solicitudes/estadisticas">Estadísticas</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Consultar Solicitudes</h1>
+                <p class="text-muted">Busca solicitudes de inscripción utilizando diferentes criterios.</p>
+            </div>
+        </div>
+
+        <!-- Búsqueda por criterios -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Búsqueda por Criterios</h5>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/solicitudes/buscar}" method="get" class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Criterio de búsqueda</label>
+                                <select name="criterio" class="form-select" required>
+                                    <option value="">Seleccionar criterio</option>
+                                    <option value="curp">CURP</option>
+                                    <option value="nombre">Nombre del alumno</option>
+                                    <option value="plantel">Nombre del plantel</option>
+                                    <option value="semestre">Semestre</option>
+                                    <option value="area">Área propedéutica</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Valor a buscar</label>
+                                <input type="text" name="valor" class="form-control"
+                                    placeholder="Ingrese el valor a buscar" required>
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">&nbsp;</label>
+                                <button type="submit" class="btn btn-primary d-block w-100">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Búsqueda por rango de fechas -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Búsqueda por Rango de Fechas</h5>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/solicitudes/buscar-por-fecha}" method="get" class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Fecha inicio</label>
+                                <input type="date" name="fechaInicio" class="form-control" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Fecha fin</label>
+                                <input type="date" name="fechaFin" class="form-control" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">&nbsp;</label>
+                                <button type="submit" class="btn btn-success d-block w-100">Buscar por Fechas</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Acciones rápidas -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Acciones Rápidas</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-2">
+                                <a href="/solicitudes/listar" class="btn btn-outline-primary w-100">
+                                    <i class="bi bi-list"></i> Ver Todas las Solicitudes
+                                </a>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <a href="/solicitudes/estadisticas" class="btn btn-outline-info w-100">
+                                    <i class="bi bi-graph-up"></i> Ver Estadísticas
+                                </a>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <a href="/" class="btn btn-outline-success w-100">
+                                    <i class="bi bi-plus-circle"></i> Nueva Solicitud
+                                </a>
+                            </div>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body></html>

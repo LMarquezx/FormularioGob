@@ -41,6 +41,12 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 
+		<!-- MongoDB dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
+
 		<!-- PDFBox u OpenPDF si sigues creando PDFs también -->
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
